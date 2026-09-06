@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Open Sans",
+        "family": "'Open Sans', sans-serif"
+    },
+    {
+        "name": "Germania One",
+        "family": "'Germania One', sans-serif"
+    },
+    {
+        "name": "Lora",
+        "family": "'Lora', sans-serif"
+    },
+    {
+        "name": "Domine",
+        "family": "'Domine', sans-serif"
+    },
+    {
+        "name": "Comic Relief",
+        "family": "'Comic Relief', sans-serif"
+    },
+    {
+        "name": "Inter",
+        "family": "'Inter', sans-serif"
+    },
+    {
+        "name": "Archivo",
+        "family": "'Archivo', sans-serif"
+    }
+]
