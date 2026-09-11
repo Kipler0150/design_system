@@ -72,7 +72,7 @@
 }
 
 .fontDesign {
-  grid-row: 2/6;
+  grid-row: 2/7;
   grid-column: 1/4;
   display: grid;
   grid-template-rows: 50px 1fr 1fr;
@@ -92,6 +92,7 @@
     grid-column: 1/2;
     display: flex;
     font-size: 2rem;
+    color: var(--text-h);
 }
 
 .selectedFontName {
@@ -109,6 +110,55 @@
     display: flex;
     justify-content: center;
 }
+
+.fontSizes {
+    color: var(--text-h);
+    display: flex;
+    flex-direction: column;
+    gap:28px;
+}
+
+.fontSizes p,
+.fontSizes h1,
+.fontSizes h2,
+.fontSizes h3,
+.fontSizes h4 {
+    margin: 0;
+}
+
+.fontSizes h1{
+    font-family: inherit;
+    font-size: 2.5rem;
+}
+
+.fontSizes h2{
+    font-family: inherit;
+    font-size: 2.0rem;
+}
+
+.fontSizes h3{
+    font-size: 1.5rem;
+}
+
+.fontSizes h4{
+    font-size: 1.3rem;
+}
+
+.fontSizes p{
+    font-size: 1rem;
+}
+
+@media (max-width: 700px) {
+    .fontDesign {
+        min-height: 605px;
+    }
+
+    .fontSizes{
+       height: auto;
+    }
+}
+
+
 
 .fontSelector.previous--animation .fontOption,
 .fontSelector.previous--animation .selectedFont span,

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./typography.css";
 
-const Typography = () => {
+const Typography = ({ onFontChange }) => {
 
     // Stores all fonts from imported-fonts.json
     const [fonts, setFonts] = useState([]);
@@ -32,6 +32,14 @@ const Typography = () => {
         }
         fetchFonts();
     }, []);
+
+    useEffect(() => {
+        const selectedFont = fonts[currentFont];
+
+        if (selectedFont) {
+            onFontChange?.(selectedFont.family);
+        }
+    }, [fonts, currentFont, onFontChange]);
 
     // If fonts haven't loaded yet,
     if (fonts.length === 0) {
@@ -92,57 +100,69 @@ const Typography = () => {
     return (
         <div className="mainItem fontDesign">
             <div className="fontDesignContainer fontDesignTitle">
-                <h2>TYPOGRAPHY</h2>
+                <h2 className="sectionTitle">TYPOGRAPHY</h2>
                 <hr></hr>
             </div>
             
             <div className="fontDesignContainer fontDesignSelector">
-            {/* Font Selector */}
-            <div className={`fontSelector ${animation ? `${animation}--animation` : ""}`}>
-                {/* Previous Font */}
-                <div className="fontOption" 
-                    id="previousFont" 
-                    style={{fontFamily: previous.family}}>
-                    {defaultFont}
-                    </div>
-                    
-
-                {/* Previous button */}
-                <button className="font-arrow" 
-                    id="previousButton" 
-                    type="button" 
-                    onClick={() => changeFont("previous")} 
-                    disabled={isAnimating}>
-                </button>
-
-                {/* Selected Font */}
-                <div className="selectedFontContainer">
-                    <div className="selectedFont">
-                        <span
-                        id="currentFont"
-                        style={{ fontFamily: current.family }}
-                        >
+                {/* Font Selector */}
+                <div className={`fontSelector ${animation ? `${animation}--animation` : ""}`}>
+                    {/* Previous Font */}
+                    <div className="fontOption" 
+                        id="previousFont" 
+                        style={{fontFamily: previous.family}}>
                         {defaultFont}
-                        </span>
+                        </div>
+                        
+
+                    {/* Previous button */}
+                    <button className="font-arrow" 
+                        id="previousButton" 
+                        type="button" 
+                        onClick={() => changeFont("previous")} 
+                        disabled={isAnimating}>
+                    </button>
+
+                    {/* Selected Font */}
+                    <div className="selectedFontContainer">
+                        <div className="selectedFont">
+                            <span
+                            id="currentFont"
+                            style={{ fontFamily: current.family }}
+                            >
+                            {defaultFont}
+                            </span>
+                        </div>
+
+                        <p className="selectedFontName" style={{fontFamily: current.family}}>{current.name}</p>
                     </div>
 
-                    <p className="selectedFontName" style={{fontFamily: current.family}}>{current.name}</p>
-                </div>
+                    {/* Next button */}
+                    <button className="font-arrow" 
+                        id="nextButton"
+                        onClick={() => changeFont("next")} 
+                        disabled={isAnimating}>
+                    </button>
 
-                {/* Next button */}
-                <button className="font-arrow" 
-                    id="nextButton"
-                    onClick={() => changeFont("next")} 
-                    disabled={isAnimating}>
-                </button>
-
-                {/* Next font */}
-                <div class="fontOption" 
-                    id="nextFont"
-                    style={{fontFamily: next.family}}>
-                    {defaultFont}
+                    {/* Next font */}
+                    <div className="fontOption" 
+                        id="nextFont"
+                        style={{fontFamily: next.family}}>
+                        {defaultFont}
+                    </div>
                 </div>
             </div>
+
+            <div className="fontDesignContainer fontDesignSizes">
+                <h2 className="sectionTitle">SIZES</h2>
+                <hr></hr>
+                <div className="fontSizes" style={{fontFamily: current.family}}>
+                    <p>PARAGRAPH</p>
+                    <h4>HEADER 4</h4>
+                    <h3>HEADER 3</h3>
+                    <h2>HEADER 2</h2>
+                    <h1>HEADER 1</h1>
+                </div>
             </div>
         </div>
     )

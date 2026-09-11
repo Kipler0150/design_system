@@ -1,0 +1,103 @@
+.colorWheelPanel {
+    display: grid;
+    gap: 12px;
+    width: min(280px, 72vw);
+    padding: 12px;
+    color: #474747;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    border-radius: 9px;
+    box-shadow: 0 8px 20px rgb(0 0 0 / 18%);
+}
+
+.colorSquare {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    background:
+        linear-gradient(to top, #000, transparent),
+        linear-gradient(to right, #fff, hsl(var(--selected-hue) 100% 50%));
+    cursor: crosshair;
+    touch-action: none;
+}
+
+.colorSquareMarker {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px #171717;
+    transform: translate(-50%, -50%);
+}
+
+.colorHueLabel {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+}
+
+.colorHueBar {
+    position: relative;
+    height: 24px;
+    border-radius: 8px;
+    background: linear-gradient(
+        to right,
+        #ff0000 0%,
+        #ffff00 17%,
+        #00ff00 33%,
+        #00ffff 50%,
+        #0000ff 67%,
+        #ff00ff 83%,
+        #ff0000 100%
+    );
+    cursor: ew-resize;
+    touch-action: none;
+}
+
+.colorHueMarker {
+    position: absolute;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px #171717;
+    transform: translate(-50%, -50%);
+}
+
+.colorMode,
+.colorValueInputs input,
+.colorHexInput {
+    min-height: 32px;
+    box-sizing: border-box;
+    border: 1px solid #d1d1d1;
+    border-radius: 8px;
+    color: #474747;
+    background: #fff;
+    font: inherit;
+}
+
+.colorMode {
+    width: 100%;
+    padding: 0 10px;
+}
+
+.colorValueInputs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+}
+
+.colorValueInputs input,
+.colorHexInput {
+    width: 100%;
+    padding: 0 8px;
+}
+
+@media (max-width: 700px) {
+    .colorWheelPanel {
+        width: min(250px, 78vw);
+    }
+}

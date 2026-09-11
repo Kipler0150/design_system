@@ -1,10 +1,14 @@
+import { useState } from 'react'
 import './App.css'
 import Typography from './design-components/typography-components/typography'
+import Color from './design-components/color-components/color'
 
 const App = () => {
+  const [selectedFont, setSelectedFont] = useState('')
+
   return (
     // Main Container Start
-    <div className="main"> 
+    <div className="main" style={{"--current-font": selectedFont}}> 
 
       {/* Main title */}
       <div className="mainTitle">
@@ -13,13 +17,11 @@ const App = () => {
         </h1>
       </div>
 
-      {/* Main Items */}
-      <Typography />
+      {/* Typography */}
+      <Typography onFontChange={setSelectedFont}/>
 
-      <div className="mainItem colorDesign">
-        <h2>COLOR</h2>
-        <hr></hr>
-      </div>
+      {/* Color */}
+      <Color />
     </div> // Main Container End
   )
 }
